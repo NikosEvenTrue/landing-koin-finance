@@ -439,17 +439,16 @@ h3 {
 
 .reviews__slider {
     --slides-space-between: 24px;
-    --slide-width: 522px;
     --card-shadow-length: 12px;
 
     grid-area: slider;
     position: relative;
     padding: var(--card-shadow-length) !important;
     margin: calc(-1 * var(--card-shadow-length)) !important;
+    overflow: hidden;
 }
 
 .reviews__slide {
-    width: var(--slide-width) !important;
     height: auto !important;
 }
 
@@ -603,9 +602,6 @@ h3 {
         grid-template-columns: repeat(1, 1fr);
     }
 
-    .reviews__slider {
-        --slide-width: 355px;
-    }
 
     .reviews__card-text {
         --line-clamp: 5;
