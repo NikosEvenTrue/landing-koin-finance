@@ -1,0 +1,33 @@
+.benefit {
+    padding-block: 25px;
+
+    &__content {
+        gap: 16px;
+    }
+
+    &__list {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    &__item {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 17px;
+    }
+
+    &__item::before {
+        content: "";
+        display: inline-block;
+        background-image: url("/icon/checkbox-true.svg");
+        background-repeat: no-repeat;
+        background-position: center;
+        width: 1em;
+        aspect-ratio: 1;
+        border: solid 3px var(--color-accent-dark);
+        border-radius: 90%;
+        padding: 20px;
+    }
+}

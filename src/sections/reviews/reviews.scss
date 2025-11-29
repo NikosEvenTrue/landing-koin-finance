@@ -1,0 +1,122 @@
+@use "/shared/styles/resolutions.scss" as resolution;
+@use "./slide/slide.scss";
+
+.reviews {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    padding-block: 40px 80px;
+    background: linear-gradient(
+        135deg,
+        #ffffff 20%,
+        rgba(28, 146, 255, 0.1) 100%
+    );
+
+    &__title {
+        font-size: 20px;
+        font-weight: 600;
+    }
+
+    &__slider {
+        display: grid;
+        gap: 40px;
+        grid-template-areas: "prev slider next";
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+
+        &-button--prev {
+            grid-area: prev;
+        }
+
+        &-button--next {
+            grid-area: next;
+        }
+
+        &-button {
+            border: none;
+            background-color: transparent;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 70px;
+            margin-inline: -20px;
+            aspect-ratio: 1;
+            color: var(--color-accent-dark);
+            position: relative;
+            padding: 0;
+            transition-duration: var(--transition-duration);
+        }
+
+        &-button::after {
+            content: "";
+            position: absolute;
+            width: 40px;
+            aspect-ratio: 1;
+            border-radius: 90%;
+            border: solid 1.5px var(--color-accent-dark);
+        }
+
+        &-button:hover {
+            background-color: var(--color-accent-light);
+            border-radius: 10px;
+        }
+
+        &-button:hover::after {
+            border: none;
+        }
+
+        &-button--prev svg {
+            transform: rotate(180deg);
+        }
+
+        &-button svg {
+            color: currentColor;
+        }
+
+        &-container {
+            --slides-space-between: 24px;
+            --slide-width: 522px;
+            --card-shadow-length: 12px;
+
+            grid-area: slider;
+            position: relative;
+            padding: var(--card-shadow-length) !important;
+            margin: calc(-1 * var(--card-shadow-length)) !important;
+        }
+    }
+}
+
+@media (max-width: resolution.$hd) {
+    .reviews {
+        padding-bottom: 40px;
+
+        &__slider {
+            grid-template-areas:
+                "slider slider"
+                "prev   next";
+            gap: 20px 105px;
+
+            &-button--prev {
+                justify-self: end;
+            }
+
+            &-button--next {
+                justify-self: start;
+            }
+        }
+    }
+}
+
+@media (max-width: resolution.$tablet) {
+    .reviews__slider-container {
+        --slide-width: 355px;
+    }
+}
+
+@media (max-width: resolution.$mobile) {
+    .reviews {
+        padding: 0;
+    }
+}

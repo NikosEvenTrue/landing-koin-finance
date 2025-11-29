@@ -1,0 +1,30 @@
+{
+  "name": "koin",
+  "version": "2.0.0",
+  "description": "A simple landing page built with HTML, CSS, and JavaScript based on a Figma design.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "rimraf dist && vite build",
+    "preview": "vite preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NikosEvenTrue/landing-koin-finance.git"
+  },
+  "author": "NikosEvenTrue",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NikosEvenTrue/landing-koin-finance/issues"
+  },
+  "homepage": "https://github.com/NikosEvenTrue/landing-koin-finance#readme",
+  "devDependencies": {
+    "rimraf": "^6.1.2",
+    "sass": "^1.94.2",
+    "vite": "^7.2.4",
+    "vite-plugin-html-inject": "^1.1.2"
+  },
+  "dependencies": {
+    "swiper": "^12.0.3"
+  }
+}

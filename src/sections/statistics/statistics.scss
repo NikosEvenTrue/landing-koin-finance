@@ -1,0 +1,35 @@
+@use "/shared/styles/resolutions.scss" as resolution;
+
+.statistics {
+    &__list {
+        background-color: var(--color-light);
+        display: flex;
+        justify-content: space-around;
+        box-shadow: var(--shadow);
+        border-radius: 16px;
+        min-height: clamp(170px, 20vw, 200px);
+        position: relative;
+        transform: translateY(-40%);
+    }
+
+    &__item {
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &__item-title {
+        font-size: clamp(40px, 3vw, 48px);
+        font-weight: 600;
+    }
+}
+
+@media (max-width: resolution.$mobile) {
+    .statistics__list {
+        flex-direction: column;
+        gap: 32px;
+        transform: translateY(-10%);
+        padding-block: 32px;
+    }
+}

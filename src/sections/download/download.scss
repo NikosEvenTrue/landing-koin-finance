@@ -1,0 +1,23 @@
+@use "/shared/styles/resolutions.scss" as resolution;
+
+.download {
+    color: var(--color-font-light);
+    background-color: var(--color-dark);
+    padding-top: 25px;
+
+    &__list {
+        grid-area: download;
+    }
+
+    &__mockup-img {
+        margin-top: -10vw;
+        box-shadow: 0 0px 4px var(--color-shadow);
+    }
+}
+
+@media (max-width: resolution.$big-tablet) {
+    .download__mockup-img {
+        margin-top: auto;
+        box-shadow: none;
+    }
+}

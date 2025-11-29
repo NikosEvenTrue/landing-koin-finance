@@ -1,0 +1,24 @@
+@use '/shared/styles/resolutions.scss' as resolution;
+
+.hero {
+    color: var(--color-font-light);
+    min-height: 100vh;
+    background-color: var(--color-dark);
+
+    &__body {
+        padding-top: 70px;
+        padding-bottom: 150px;
+    }
+}
+
+@media (max-width: resolution.$hd) {
+    .hero {
+        min-height: auto;
+    }
+}
+
+@media (max-width: resolution.$big-tablet) {
+    .hero__img {
+        min-width: 336px;
+    }
+}

@@ -1,0 +1,147 @@
+@use "/shared/styles/resolutions.scss" as resolution;
+
+.footer {
+    background-color: var(--color-dark);
+    color: var(--color-font-light);
+    padding: 72px 80px;
+    display: grid;
+    gap: 26px;
+    grid-template-columns: 65% 1fr;
+    grid-template-areas:
+        "logo subscribe"
+        "nav ."
+        "socials download";
+    align-items: center;
+    &__logo {
+        grid-area: logo;
+    }
+
+    &__nav {
+        grid-area: nav;
+        &-list {
+            display: flex;
+            flex-direction: row;
+            gap: 33px;
+        }
+    }
+
+    &__socials {
+        grid-area: socials;
+        display: flex;
+        flex-direction: row;
+        gap: 21px;
+
+        &-link {
+            display: flex;
+            align-items: center;
+        }
+    }
+
+    &__subscribe {
+        grid-area: subscribe;
+        max-width: 415px;
+        min-width: 415px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        &-title {
+            font-weight: 400;
+        }
+
+        &-form {
+            position: relative;
+            height: 69px;
+            display: flex;
+            flex-direction: row;
+
+            &-email {
+                color: var(--color-font-dark);
+                border: none;
+                padding: 23px 153px 23px 23px;
+                font-size: 15px;
+
+                background-color: var(--color-light);
+                border-radius: 8px;
+                width: 100%;
+            }
+
+            &-button {
+                position: absolute;
+                right: 0px;
+                width: 130px;
+                height: 100%;
+            }
+        }
+    }
+
+    &__download {
+        grid-area: download;
+    }
+}
+
+@media (max-width: resolution.$hd) {
+    .footer {
+        grid-template-columns: 35% 1fr;
+        grid-template-areas:
+            "logo right"
+            "nav right"
+            "socials .";
+
+        &__nav {
+            &-list {
+                flex-direction: column;
+            }
+        }
+
+        &__subscribe,
+        &__download {
+            grid-area: right;
+        }
+
+        &__subscribe {
+            align-self: start;
+            justify-self: end;
+        }
+
+        &__download {
+            margin-top: 128px;
+            justify-self: end;
+        }
+    }
+}
+
+@media (max-width: resolution.$tablet) {
+    .footer {
+        padding-block: 42px;
+        grid-template-columns: auto;
+        grid-template-areas:
+            "logo"
+            "nav"
+            "subscribe"
+            "socials"
+            "download";
+        gap: 32px;
+
+        &__nav {
+            &-list {
+                gap: 40px;
+            }
+        }
+
+        &__subscribe,
+        &__download {
+            justify-self: start;
+        }
+
+        &__subscribe {
+            grid-area: subscribe;
+            min-width: 350px;
+        }
+
+        &__download {
+            margin-top: 0px;
+            grid-area: download;
+        }
+    }
+}

@@ -1,0 +1,10 @@
+.logo {
+    font-size: clamp(40px, 5.9vw, 64px);
+    font-weight: 600;
+    color: var(--color-font-light);
+    line-height: 1;
+
+    .accent {
+        color: var(--color-accent-dark);
+    }
+}

@@ -1,0 +1,106 @@
+@use "/shared/styles/resolutions.scss" as resolution;
+
+@mixin one-line-text {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.reviews__slide {
+    width: var(--slide-width) !important;
+    height: auto !important;
+
+    &-card {
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        gap: 16px;
+        background-color: var(--color-light);
+        border-radius: 28px;
+        box-shadow: 0 0 var(--card-shadow-length) var(--color-shadow);
+        padding: 24px;
+        height: 100%;
+
+        &-title {
+            @include one-line-text();
+        }
+
+        &-text {
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            --line-clamp: 4;
+            -webkit-line-clamp: var(--line-clamp);
+            line-clamp: var(--line-clamp);
+            text-overflow: ellipsis;
+        }
+
+        &-author {
+            margin-top: auto;
+            display: grid;
+            align-items: center;
+            gap: 10px;
+            grid-template-columns: auto auto 1fr;
+            grid-template-areas: "avatar info rating";
+
+            &-avatar {
+                grid-area: avatar;
+                border-radius: 90%;
+            }
+
+            &-info {
+                grid-area: info;
+                min-width: 0;
+
+                &-name {
+                    @include one-line-text();
+                    font-weight: 600;
+                }
+
+                &-location {
+                    @include one-line-text();
+                }
+            }
+
+            &-rated {
+                grid-area: rating;
+                justify-self: end;
+                white-space: nowrap;
+
+                &-star {
+                    fill: none;
+                    stroke: var(--color-accent-dark);
+                    stroke-width: 1.5;
+                }
+
+                &-star.--filled {
+                    fill: var(--color-accent-dark);
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: resolution.$tablet) {
+    .reviews__slide-card {
+        &-text {
+            --line-clamp: 5;
+        }
+
+        &-author {
+            grid-template-areas:
+                "rating rating"
+                "avatar info";
+
+            &-rated {
+                justify-self: auto;
+            }
+        }
+    }
+}
+
+@media (max-width: resolution.$mobile) {
+    .reviews__slide-card-text {
+        --line-clamp: 7;
+    }
+}

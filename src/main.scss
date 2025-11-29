@@ -1,0 +1,120 @@
+@use "./shared/styles/resolutions.scss" as resolution;
+
+@use "./shared/styles/fonts.css";
+@use "./shared/styles/reset.css";
+@use "./shared/styles/variables.css";
+
+@use "/sections/hero/hero.scss";
+@use "/sections/statistics/statistics.scss";
+@use "/sections/service/service.scss";
+@use "/sections/benefit/benefit.scss";
+@use "/sections/download/download.scss";
+@use "/sections/reviews/reviews.scss";
+@use "/components/header/header.scss";
+@use "/components/footer/footer.scss";
+
+@use "/components/popup/popup.scss";
+@use "/components/logo/logo.scss";
+@use "/components/download-links/download-links.scss";
+@use "/components/button/button.scss";
+
+
+/* COMPONENTS */
+
+.visually-hidden {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    margin: -1px !important;
+    border: 0 !important;
+    padding: 0 !important;
+    white-space: nowrap !important;
+    clip-path: inset(100%) !important;
+    clip: rect(0 0 0 0) !important;
+    overflow: hidden !important;
+}
+
+.container {
+    padding-inline: 5vw;
+}
+
+.split {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 120px;
+}
+
+.split__content {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 32px;
+}
+
+.split__content.--max-width {
+    max-width: 630px;
+}
+
+/* MAIN */
+
+h1 {
+    font-size: clamp(48px, 4.4vw, 80px);
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: 0;
+}
+
+h2 {
+    font-size: clamp(32px, 3.83vw, 48px);
+    line-height: 1.225;
+}
+
+h3 {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+a:not(.button):not(.logo):hover {
+    color: var(--color-font-light-accent);
+}
+
+body {
+    font-family: var(--font-family-base);
+    font-weight: 400;
+    color: var(--color-font-dark);
+    background-color: var(--color-light);
+    font-size: 20px;
+    line-height: 1.6;
+}
+
+@media (max-width: resolution.$hd) {
+    .split {
+        gap: 16px;
+    }
+
+    .split__img {
+        max-width: 50%;
+    }
+}
+
+@media (max-width: resolution.$big-tablet) {
+    .split {
+        flex-direction: column;
+    }
+
+    .split__img {
+        max-width: 90%;
+    }
+
+    .split__content.--max-width {
+        max-width: 570px;
+    }
+}
+
+@media (max-width: resolution.$mobile) {
+    .container {
+        padding-inline: 4.1vw;
+    }
+}

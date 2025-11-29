@@ -1,4 +1,4 @@
-const popupIcons = {
+export const popupIcons = {
     lock: `
     <svg width="64" height="64" viewBox="0 0 64 64" fill="none"
          stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
@@ -16,32 +16,13 @@ const popupIcons = {
     </svg>`,
 }
 
-const buttonPopupInstance = createPopup({
-    title: "Button isn’t working yet",
-    message: "This feature is currently in development.",
-    icon: popupIcons.lock,
-})
-
-const refPopupInstance = createPopup({
-    title: "Mapping the routes",
-    message: "This link doesn’t lead anywhere just yet.",
-    icon: popupIcons.link,
-})
-
-document.addEventListener('DOMContentLoaded', () => {
-    document.body.appendChild(buttonPopupInstance.popup)
-    document.body.appendChild(refPopupInstance.popup)
-    initButtons()
-    initRefs()
-})
-
 /**
  * @param {Object} options - Popup options
  * @param {string} options.title - Title
  * @param {string} options.message - Message text
  * @param {string} options.icon - Path to icon
  */
-function createPopup(options) {
+export function createPopup(options) {
     const {
         title = 'Warning',
         message = '',
@@ -84,28 +65,22 @@ function createPopup(options) {
         popup: overlay,
         show: () => {
             overlay.classList.add('active')
-            document.body.style.overflow = 'hidden'
         },
         close: closePopup
     }
 }
 
-function initButtons() {
-    const buttons = document.querySelectorAll('.button')
-    buttons.forEach(button => {
-        button.addEventListener('click', (e) => {
+/**
+ * @param {string} event - example: 'click'
+ * @param {string} selector - example '.button'
+ * @param {Object} popup - popup instance
+ */
+export function initPopupOn(event, selector, popup) {
+    const toList = document.querySelectorAll(selector)
+    toList.forEach(toElem => {
+        toElem.addEventListener(event, (e) => {
             e.preventDefault()
-            buttonPopupInstance.show()
-        })
-    })
-}
-
-function initRefs() {
-    const buttons = document.querySelectorAll('a:not(.button)')
-    buttons.forEach(button => {
-        button.addEventListener('click', (e) => {
-            e.preventDefault()
-            refPopupInstance.show()
+            popup.show()
         })
     })
 }

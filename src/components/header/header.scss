@@ -1,0 +1,137 @@
+@use "/shared/styles/resolutions.scss" as resolution;
+
+.header {
+    color: var(--color-font-light);
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-block: 19px;
+
+    &__burger-button {
+        padding-inline: 10px;
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        row-gap: 5px;
+        width: 40px;
+        aspect-ratio: 1;
+        background-color: transparent;
+        border-width: 0;
+
+        &-line {
+            display: inline-block;
+            width: 30px;
+            height: 3px;
+            background-color: currentColor;
+        }
+    }
+
+    &__menu {
+        &-close-button {
+            display: none;
+        }
+
+        &-list {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 2.8em;
+        }
+    }
+}
+
+@media (max-width: resolution.$hd) {
+    .header {
+        position: relative;
+        overflow-x: clip;
+
+        &__burger-button {
+            display: flex;
+        }
+
+        &__menu {
+            opacity: 0;
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            padding-block: 10%;
+            background-color: var(--color-dark);
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transform: translateX(100%);
+            transition: transform var(--transition-duration) ease-in-out,
+                opacity var(--transition-duration) ease;
+            border: solid 1px var(--color-accent-dark);
+            border-top: none;
+            border-right: none;
+            border-radius: 0 0 0 10px;
+
+            &--is-open {
+                transform: translateX(0);
+                opacity: 0.95;
+            }
+
+            &-close-button {
+                line-height: 1;
+                display: block;
+                position: absolute;
+                top: 20px;
+                right: 4.7vw;
+                font-size: 53px;
+                background: none;
+                border: none;
+                cursor: pointer;
+                color: var(--color-font-light);
+                z-index: 101;
+            }
+
+            &-list {
+                flex-direction: column;
+            }
+        }
+    }
+}
+
+@media (max-width: resolution.$big-tablet) {
+    body.body--menu-opened {
+        overflow: hidden;
+    }
+
+    .header {
+        &__menu {
+            position: fixed;
+            overflow: auto;
+            width: 100%;
+            height: 100%;
+            border-radius: 0;
+            border: none;
+
+            &-close-button {
+                top: 19px;
+                right: 4.7vw;
+            }
+
+            &-list {
+                font-size: 1.5em;
+                gap: 50px;
+            }
+        }
+    }
+}
+
+@media (max-width: resolution.$mobile) {
+    .header {
+        &__menu {
+            &-close-button {
+                top: 14px;
+                right: 3.5vw;
+            }
+        }
+    }
+}
